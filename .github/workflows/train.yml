@@ -7,9 +7,11 @@ on:
 
 jobs:
   train-model:
+
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -18,19 +20,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Setup Conda
-        uses: conda-incubator/setup-miniconda@v3
-        with:
-          auto-update-conda: true
-          python-version: 3.11
-
       - name: Install Dependencies
-        shell: bash -l {0}
         run: |
           pip install mlflow==2.19.0
           pip install -r requirements.txt
 
       - name: Run MLflow Project
-        shell: bash -l {0}
         run: |
-          mlflow run .
+          mlflow run . --env-manager=local
