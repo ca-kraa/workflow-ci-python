@@ -7,11 +7,9 @@ on:
 
 jobs:
   train-model:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -23,8 +21,8 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install mlflow==2.19.0
-          pip install -r requirements.txt
+          pip install -r MLProject/requirements.txt
 
       - name: Run MLflow Project
         run: |
-          mlflow run . --env-manager=local
+          mlflow run MLProject --env-manager=local
